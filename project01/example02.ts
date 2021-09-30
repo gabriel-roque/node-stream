@@ -13,3 +13,5 @@ http.createServer((req, res) => {
 
 
 }).listen(3000, () => console.log('server run in 3000'))
+
+// Test it with: curl localhost:3000 --output output.txt
