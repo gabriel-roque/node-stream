@@ -6,10 +6,11 @@ import csvtojson from 'csvtojson';
 import jsontocsv from 'json-to-csv-stream';
 import StreamConcat from 'stream-concat';
 
+// nodemon project02/index.js
+// clinic doctor -- node project02/index.js
+
 const pipelineAync = promisify(pipeline)
 const { readdir } = promises
-import debug from 'debug';
-const log = debug('app:concat')
 
 const { pathname: currentFile } = new URL(import.meta.url)
 

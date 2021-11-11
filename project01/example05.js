@@ -1,3 +1,5 @@
+// nodemon project01/example05.js
+
 import { pipeline, Readable, Writable, Transform } from 'stream'
 import { promisify } from 'util'
 import { createWriteStream } from 'fs';
@@ -24,7 +26,7 @@ const writableMaptoCSV = new Transform({
   }
 })
 
-let counter: number
+let counter
 const setHeader = new Transform({
   transform: (chunk, encoding, cb) => {
     counter = counter ?? 0
@@ -41,20 +43,21 @@ const setHeader = new Transform({
 
 const writableStream = new Writable({
   write: (chunk, encoding, cb) => {
+    console.log(chunk);
     console.log('chunk >>>', chunk, Buffer.from(chunk).toString('utf-8'));
     cb()
   }
 })
 
 
-async function run() {
+async function run () {
   await pipelineAsync(
     readableStream,
     writableMaptoCSV,
     setHeader,
     // writableStream,
     createWriteStream('my.csv')
-  ).finally(() => console.log('Finish Strem!'))
+  ).finally(() => console.log('Finish Stream!'))
 }
 
 run()

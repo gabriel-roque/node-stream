@@ -1,8 +1,11 @@
-import http from 'http'
-import { readFileSync, createReadStream, createWriteStream } from 'fs'
+// nodemon project01/example02.cjs
+// clinic doctor -- node project01/example02.cjs
+
+const { createServer } = require('http')
+const { readFileSync, createReadStream } = require('fs')
 
 // GENERATE BIG FILE: node -e "process.stdout.write(crypto.randomBytes(1e9))" > big.file
-http.createServer((req, res) => {
+createServer((req, res) => {
   // BAD SOLUCTION
   // const file = readFileSync('big.file')
   // res.write(file)

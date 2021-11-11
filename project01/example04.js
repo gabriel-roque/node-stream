@@ -3,6 +3,8 @@
   eventualmente algum pode causar erro e não ter uma tratativa adequada
 */
 
+// nodemon project01/example04.js
+
 import { pipeline, Readable, Writable } from 'stream'
 import { promisify } from 'util';
 
@@ -18,13 +20,13 @@ const readableStream = new Readable({
 })
 
 const writableStream = new Writable({
-  write(chunk, encoding, cb) {
+  write (chunk, encoding, cb) {
     console.log('chunk >>>', chunk, Buffer.from(chunk).toString('utf-8'));
     cb()
   }
 })
 
-async function run() {
+async function run () {
   await pipelineAsync(
     readableStream,
     writableStream
